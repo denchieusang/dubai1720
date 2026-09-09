@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Những sản phẩm Dubai đã dùng - gợi ý mua trên Shopee." />
+  <title>Dubai Đã Dùng</title>
+
+  <style>
+    :root{
+      --bg:#fffaf2;
+      --card:#ffffff;
+      --text:#25324a;
+      --muted:#75809a;
+      --line:#e7eaf2;
+      --accent:#ff7a59;
+      --accent-soft:#fff0ea;
+      --sky:#eaf7ff;
+      --mint:#ecfff5;
+      --yellow:#fff8d9;
+      --dark:#3d4f73;
+      --radius:12px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(234,247,255,.95), transparent 28%),
+        radial-gradient(circle at 90% 12%, rgba(255,248,217,.85), transparent 26%),
+        linear-gradient(180deg,#fffdf8 0%,var(--bg) 100%);
+      color:var(--text);
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    button,input{font:inherit}
+    .wrap{width:min(1100px,calc(100% - 20px));margin:auto}
+
+    /* HEADER */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 2px 10px rgba(64,79,115,.04);
+    }
+
+    .topbar{
+      min-height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:18px;
+      font-weight:800;
+    }
+
+    .brand-logo{
+      width:32px;
+      height:32px;
+      border-radius:9px;
+      background:linear-gradient(135deg,#ff8d73,#ffb36a);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-size:14px;
+      font-weight:900;
+    }
+
+    .mini-search{
+      width:min(330px,50vw);
+      height:36px;
+      border:1px solid var(--line);
+      border-radius:9px;
+      padding:0 11px;
+      outline:none;
+      background:#fbfdff;
+    }
+
+    .mini-search:focus{
+      border-color:#9fdcff;
+      background:#fff;
+      box-shadow:0 0 0 3px rgba(159,220,255,.18);
+    }
+
+    /* COVER */
+    .cover-section{
+      padding:12px 0 8px;
+    }
+
+    .cover{
+      position:relative;
+      overflow:hidden;
+      border-radius:14px;
+      background:#ddd;
+      aspect-ratio:4/1;
+      min-height:150px;
+    }
+
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .cover-placeholder{
+      width:100%;
+      height:100%;
+      min-height:150px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg,rgba(234,247,255,.98),rgba(255,248,217,.95)),
+        #f7fbff;
+      color:#6f7b95;
+      font-size:14px;
+      text-align:center;
+      padding:20px;
+    }
+
+    .profile-row{
+      display:flex;
+      align-items:flex-end;
+      gap:12px;
+      margin-top:-34px;
+      position:relative;
+      z-index:2;
+      padding:0 14px;
+    }
+
+    .avatar{
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      overflow:hidden;
+      background:#ddd;
+      border:4px solid #fff;
+      flex:0 0 auto;
+    }
+
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .avatar-fallback{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#80cfff,#8ee7bd);
+      color:white;
+      font-size:24px;
+      font-weight:900;
+    }
+
+    .profile-text{
+      min-width:0;
+      padding-bottom:4px;
+    }
+
+    .profile-text h1{
+      margin:0;
+      font-size:20px;
+      line-height:1.2;
+    }
+
+    .profile-text p{
+      margin:4px 0 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* MENU */
+    .category-wrap{
+      position:sticky;
+      top:52px;
+      z-index:40;
+      padding:8px 0 10px;
+      background:rgba(255,250,242,.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(231,234,242,.9);
+    }
+
+    .category-menu{
+      display:flex;
+      gap:7px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+
+    .category-menu::-webkit-scrollbar{display:none}
+
+    .category-btn{
+      flex:0 0 auto;
+      border:1px solid var(--line);
+      background:#fff;
+      color:#56637f;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .category-btn.active{
+      background:linear-gradient(135deg,#82cfff,#8fe0b9);
+      color:#23405c;
+      border-color:transparent;
+      box-shadow:0 3px 10px rgba(117,190,221,.18);
+    }
+
+    /* PRODUCT GRID */
+    main{padding-bottom:35px}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin:6px 0 10px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:17px;
+    }
+
+    .result-count{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .product-card{
+      min-width:0;
+      background:rgba(255,255,255,.98);
+      border:1px solid #e8edf5;
+      border-radius:12px;
+      overflow:hidden;
+      transition:.18s ease;
+    }
+
+    .product-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
+    }
+
+    .product-img{
+      aspect-ratio:1/1;
+      background:linear-gradient(135deg,#eef8ff,#fff8e8);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .product-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .img-fallback{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      color:#999;
+      font-size:12px;
+      padding:10px;
+      text-align:center;
+      background:linear-gradient(135deg,#eef8ff,#fff8e8);
+    }
+
+    .badge{
+      position:absolute;
+      top:7px;
+      left:7px;
+      background:rgba(61,79,115,.86);
+      color:#fff;
+      font-size:9px;
+      font-weight:700;
+      padding:4px 6px;
+      border-radius:999px;
+    }
+
+    .product-info{
+      padding:9px;
+    }
+
+    .product-name{
+      margin:0;
+      font-size:13px;
+      line-height:1.35;
+      min-height:35px;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+
+    .product-category{
+      margin-top:5px;
+      color:#999;
+      font-size:10px;
+    }
+
+    .product-bottom{
+      margin-top:7px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:6px;
+    }
+
+    .price{
+      color:var(--accent);
+      font-size:13px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .shop-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:32px;
+      height:28px;
+      padding:0 8px;
+      border-radius:8px;
+      background:linear-gradient(135deg,#ff8a68,#ffac66);
+      color:#fff;
+      font-size:10px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .empty{
+      display:none;
+      padding:30px 10px;
+      text-align:center;
+      background:#fff;
+      border:1px dashed var(--line);
+      border-radius:12px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .affiliate-note{
+      margin-top:18px;
+      font-size:11px;
+      color:#8a8a8a;
+      line-height:1.6;
+      text-align:center;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.96);
+      color:#8a94aa;
+      font-size:11px;
+      text-align:center;
+      padding:16px 10px;
+    }
+
+    @media(max-width:900px){
+      .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    }
+
+    @media(max-width:700px){
+      .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .cover{aspect-ratio:3/1}
+    }
+
+    @media(max-width:520px){
+      .wrap{width:min(100% - 14px,1100px)}
+      .topbar{min-height:48px}
+      .category-wrap{top:48px}
+      .brand span:last-child{font-size:15px}
+      .mini-search{width:46vw;height:34px;font-size:13px}
+      .cover-section{padding-top:7px}
+      .cover{
+        border-radius:11px;
+        min-height:120px;
+        aspect-ratio:2.6/1;
+      }
+      .cover-placeholder{min-height:120px}
+      .profile-row{
+        margin-top:-28px;
+        padding:0 7px;
+      }
+      .avatar{
+        width:62px;
+        height:62px;
+      }
+      .profile-text h1{font-size:17px}
+      .profile-text p{font-size:11px}
+      .grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:7px;
+      }
+      .product-info{padding:8px}
+      .product-name{font-size:12px;min-height:33px}
+      .price{font-size:12px}
+      .shop-btn{font-size:9px;padding:0 7px}
+      .section-head h2{font-size:15px}
+    }
+  
+    /* STUDY MATERIALS */
+    .study-section{
+      padding:24px 0 8px;
+      border-top:1px solid rgba(231,234,242,.9);
+      background:linear-gradient(180deg,rgba(234,247,255,.38),rgba(255,248,217,.28));
+    }
+
+    .study-title-row{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .study-title-row h2{
+      margin:0;
+      font-size:18px;
+    }
+
+    .study-title-row p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.5;
+    }
+
+    .study-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .subject-card{
+      min-width:0;
+      border:1px solid #e6ebf3;
+      background:#fff;
+      border-radius:13px;
+      overflow:hidden;
+    }
+
+    .subject-button{
+      width:100%;
+      border:0;
+      background:#fff;
+      padding:0;
+      text-align:left;
+      cursor:pointer;
+      color:inherit;
+    }
+
+    .subject-image{
+      aspect-ratio:16/8;
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(135deg,#eef8ff,#fff8e7);
+    }
+
+    .subject-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .subject-image-fallback{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      padding:12px;
+      text-align:center;
+      color:#71809a;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .subject-name{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      padding:10px 11px;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .subject-arrow{
+      color:#8a96aa;
+      transition:transform .18s ease;
+    }
+
+    .subject-card.open .subject-arrow{
+      transform:rotate(180deg);
+    }
+
+    .subject-links{
+      display:none;
+      border-top:1px solid #edf0f5;
+      padding:7px;
+      background:#fbfdff;
+    }
+
+    .subject-card.open .subject-links{
+      display:block;
+    }
+
+    .study-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:38px;
+      padding:8px 9px;
+      margin:3px 0;
+      border-radius:9px;
+      background:#fff;
+      border:1px solid #edf0f5;
+      color:#40516f;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .study-link span:first-child{
+      min-width:0;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    .study-link-go{
+      flex:0 0 auto;
+      color:#ff7659;
+      font-size:10px;
+      font-weight:800;
+    }
+
+    .no-study-link{
+      padding:9px;
+      color:#8c96a8;
+      font-size:11px;
+      line-height:1.5;
+    }
+
+    .thanks-section{
+      padding:20px 0 24px;
+    }
+
+    .thanks-box{
+      border:1px solid #e8edf4;
+      border-radius:14px;
+      background:rgba(255,255,255,.88);
+      padding:16px;
+      text-align:center;
+    }
+
+    .thanks-box strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:7px;
+    }
+
+    .thanks-lines{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:7px;
+    }
+
+    .thanks-line{
+      padding:7px 10px;
+      border-radius:999px;
+      background:#fff8df;
+      color:#68748a;
+      font-size:11px;
+      line-height:1.4;
+    }
+
+    @media(max-width:620px){
+      .study-grid{grid-template-columns:1fr}
+      .subject-image{aspect-ratio:16/6}
+      .study-title-row{align-items:flex-start;flex-direction:column}
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <a href="#top" class="brand">
+      <span class="brand-logo">D</span>
+      <span>Dubai Đã Dùng</span>
+    </a>
+
+    <input
+      id="searchInput"
+      class="mini-search"
+      type="search"
+      placeholder="Tìm sản phẩm..."
+      autocomplete="off"
+    />
+  </div>
+</header>
+
+<section class="cover-section" id="top">
+  <div class="wrap">
+
+    <!-- ẢNH BÌA:
+         Upload ảnh vào thư mục images/ trên GitHub.
+         Ví dụ: images/dubai-cover.jpg
+    -->
+    <div class="cover">
+      <img
+        src="images/dubai-cover.jpg"
+        alt="Ảnh bìa Dubai"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+      />
+      <div class="cover-placeholder" style="display:none">
+        ẢNH BÌA DUBAI<br>
+        images/dubai-cover.jpg
+      </div>
+    </div>
+
+    <div class="profile-row">
+
+      <!-- ẢNH ĐẠI DIỆN DUBAI:
+           Ví dụ: images/dubai-avatar.jpg
+      -->
+      <div class="avatar">
+        <img
+          src="images/dubai-avatar.jpg"
+          alt="Dubai"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+        />
+        <div class="avatar-fallback" style="display:none">D</div>
+      </div>
+
+      <div class="profile-text">
+        <h1>Dubai đã dùng gì?</h1>
+        <p>Tổng hợp những món Dubai đã sử dụng và gợi ý tham khảo trên Shopee.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="category-wrap">
+  <div class="wrap">
+    <div class="category-menu" id="categoryMenu"></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <div class="section-head">
+      <h2>Sản phẩm</h2>
+      <div class="result-count" id="resultCount"></div>
+    </div>
+
+    <div class="grid" id="productGrid"></div>
+
+    <div class="empty" id="emptyState">
+      Không tìm thấy sản phẩm phù hợp.
+    </div>
+
+    <div class="affiliate-note">
+      Một số liên kết có thể là liên kết tiếp thị liên kết Shopee.
+      Giá, voucher và chương trình khuyến mại vui lòng kiểm tra trực tiếp trên Shopee.
+    </div>
+
+  </div>
+</main>
+
+<!-- =====================================================
+     TÀI LIỆU HỌC TẬP
+     Phần này nằm cố định ở cuối nội dung trang.
+     KHÔNG sticky - khi cuộn lên sẽ không bám theo màn hình.
+====================================================== -->
+<section class="study-section" id="tai-lieu-hoc-tap">
+  <div class="wrap">
+
+    <div class="study-title-row">
+      <div>
+        <h2>📚 Tài liệu học tập</h2>
+        <p>Phụ huynh có thể chọn môn học để mở danh sách tài liệu tham khảo.</p>
+      </div>
+    </div>
+
+    <div class="study-grid" id="studyGrid"></div>
+
+  </div>
+</section>
+
+<section class="thanks-section">
+  <div class="wrap">
+    <div class="thanks-box">
+      <strong>🌈 Cảm ơn bạn đã ghé thăm Dubai Đã Dùng!</strong>
+      <div class="thanks-lines">
+        <span class="thanks-line">Chúc cả nhà mỗi ngày học một chút, vui thật nhiều 😊</span>
+        <span class="thanks-line">Thấy món nào hữu ích thì mình tham khảo, không cần mua vội nhé!</span>
+        <span class="thanks-line">Chúc các bạn nhỏ học tốt, chơi vui và luôn tò mò khám phá ✨</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Dubai Đã Dùng
+</footer>
+
+<script>
+/*
+=================================================================
+A. DANH SÁCH SẢN PHẨM
+=================================================================
+
+QUY ƯỚC MỖI SẢN PHẨM = 1 DÒNG:
+["Tên sản phẩm","Giá","Ảnh","Link Shopee","Nhãn"]
+
+Ảnh sản phẩm:
+- Upload ảnh vào thư mục images/ trên GitHub.
+- Ví dụ: images/banh-an-sang.jpg
+- index.html và thư mục images phải nằm cùng cấp.
+
+Khi thêm sản phẩm mới:
+1. Tìm đúng nhóm danh mục bên dưới.
+2. Copy 1 dòng sản phẩm.
+3. Sửa tên, giá, ảnh, link Shopee và nhãn.
+*/
+
+
+// ================================================================
+// THỰC PHẨM
+// ================================================================
+const FOOD_PRODUCTS = [
+["Bánh ăn sáng Dubai hay dùng","79.000đ","images/banh-an-sang.jpg","https://shopee.vn/","Đã dùng"],
+["Sữa hạt tiện lợi","129.000đ","images/sua-hat.jpg","https://shopee.vn/","Gợi ý"]
+];
+
+
+// ================================================================
+// ĐỒ DÙNG HỌC TẬP
+// ================================================================
+const SCHOOL_PRODUCTS = [
+["Bút viết học tập","35.000đ","images/but-viet.jpg","https://shopee.vn/","Đã dùng"],
+["Hộp bút nhỏ gọn","49.000đ","images/hop-but.jpg","https://shopee.vn/","Gợi ý"]
+];
+
+
+// ================================================================
+// QUẦN ÁO
+// ================================================================
+const CLOTHES_PRODUCTS = [
+["Áo thun basic","149.000đ","images/ao-thun.jpg","https://shopee.vn/","Đã dùng"],
+["Quần short mặc nhà","119.000đ","images/quan-short.jpg","https://shopee.vn/","Gợi ý"]
+];
+
+
+// ================================================================
+// PHỤ KIỆN
+// ================================================================
+const ACCESSORY_PRODUCTS = [
+["Balo mini","159.000đ","images/balo-mini.jpg","https://shopee.vn/","Đã dùng"],
+["Bình nước cá nhân","89.000đ","images/binh-nuoc.jpg","https://shopee.vn/","Hay dùng"]
+];
+
+
+// ================================================================
+// GIA DỤNG
+// ================================================================
+const HOME_PRODUCTS = [
+["Đèn ngủ mini","99.000đ","images/den-ngu.jpg","https://shopee.vn/","Gợi ý"]
+];
+
+
+// ================================================================
+// CÔNG NGHỆ
+// ================================================================
+const TECH_PRODUCTS = [
+["Tai nghe Bluetooth","299.000đ","images/tai-nghe.jpg","https://shopee.vn/","Đã dùng"]
+];
+
+
+// ================================================================
+// KHÁC
+// ================================================================
+const OTHER_PRODUCTS = [
+// ["Tên sản phẩm","Giá","images/ten-anh.jpg","LINK-SHOPEE","Đã dùng"]
+];
+
+
+/*
+=================================================================
+KHÔNG CẦN SỬA PHẦN NÀY KHI THÊM SẢN PHẨM.
+Website tự ghép các nhóm bên trên thành menu.
+=================================================================
+*/
+const PRODUCT_GROUPS = {
+  "Thực phẩm": FOOD_PRODUCTS,
+  "Đồ dùng học tập": SCHOOL_PRODUCTS,
+  "Quần áo": CLOTHES_PRODUCTS,
+  "Phụ kiện": ACCESSORY_PRODUCTS,
+  "Gia dụng": HOME_PRODUCTS,
+  "Công nghệ": TECH_PRODUCTS,
+  "Khác": OTHER_PRODUCTS
+};
+
+
+/*
+=================================================================
+B. TÀI LIỆU HỌC TẬP
+=================================================================
+
+Mỗi link tài liệu = 1 dòng:
+["Tên hiển thị cho phụ huynh","LINK WEBSITE HOẶC GOOGLE DRIVE"]
+
+Ảnh môn học:
+- TOÁN: images/toan.jpg
+- ENGLISH: images/english.jpg
+- VĂN - TRUYỆN: images/van-truyen.jpg
+
+Có thể dùng link:
+- Google Drive
+- Google Docs
+- Website khác
+- Trang tài liệu riêng
+*/
+
+
+// ================================================================
+// TOÁN
+// ================================================================
+const MATH_LINKS = [
+["Bài tập Toán tham khảo","https://drive.google.com/"],
+["Tài liệu luyện Toán","https://drive.google.com/"]
+];
+
+
+// ================================================================
+// ENGLISH
+// ================================================================
+const ENGLISH_LINKS = [
+["Từ vựng English tham khảo","https://drive.google.com/"],
+["Bài tập English","https://drive.google.com/"]
+];
+
+
+// ================================================================
+// VĂN - TRUYỆN
+// ================================================================
+const LITERATURE_LINKS = [
+["Truyện đọc cho bé","https://drive.google.com/"],
+["Tài liệu đọc hiểu","https://drive.google.com/"]
+];
+
+
+/*
+=================================================================
+KHÔNG CẦN SỬA PHẦN NÀY NẾU CHỈ THÊM LINK TÀI LIỆU.
+=================================================================
+*/
+const STUDY_SUBJECTS = [
+  ["TOÁN","images/toan.jpg",MATH_LINKS],
+  ["ENGLISH","images/english.jpg",ENGLISH_LINKS],
+  ["VĂN - TRUYỆN","images/van-truyen.jpg",LITERATURE_LINKS]
+];
+
+
+// =================================================================
+// PHẦN HIỂN THỊ WEBSITE - KHÔNG CẦN SỬA
+// =================================================================
+const productGrid = document.getElementById("productGrid");
+const categoryMenu = document.getElementById("categoryMenu");
+const searchInput = document.getElementById("searchInput");
+const resultCount = document.getElementById("resultCount");
+const emptyState = document.getElementById("emptyState");
+const studyGrid = document.getElementById("studyGrid");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+let activeCategory = "Tất cả";
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function allProducts(){
+  const result = [];
+
+  Object.entries(PRODUCT_GROUPS).forEach(([category,items]) => {
+    items.forEach(item => {
+      result.push([
+        item[0],
+        category,
+        item[1],
+        item[2],
+        item[3],
+        item[4]
+      ]);
+    });
+  });
+
+  return result;
+}
+
+function getCategories(){
+  const filledCategories = Object.entries(PRODUCT_GROUPS)
+    .filter(([,items]) => items.length > 0)
+    .map(([category]) => category);
+
+  return ["Tất cả", ...filledCategories];
+}
+
+function renderCategories(){
+  categoryMenu.innerHTML = getCategories().map(category => `
+    <button
+      type="button"
+      class="category-btn ${category === activeCategory ? "active" : ""}"
+      data-category="${escapeHTML(category)}"
+    >
+      ${escapeHTML(category)}
+    </button>
+  `).join("");
+
+  categoryMenu.querySelectorAll(".category-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      activeCategory = btn.dataset.category;
+      renderCategories();
+      renderProducts();
+    });
+  });
+}
+
+function getFilteredProducts(){
+  const keyword = searchInput.value.trim().toLowerCase();
+
+  return allProducts().filter(item => {
+    const [name,category] = item;
+
+    const matchCategory =
+      activeCategory === "Tất cả" ||
+      category === activeCategory;
+
+    const matchSearch =
+      `${name} ${category}`.toLowerCase().includes(keyword);
+
+    return matchCategory && matchSearch;
+  });
+}
+
+function renderProducts(){
+  const list = getFilteredProducts();
+
+  resultCount.textContent = `${list.length} sản phẩm`;
+  emptyState.style.display = list.length ? "none" : "block";
+
+  productGrid.innerHTML = list.map(item => {
+    const [name,category,price,image,link,badge] = item;
+
+    return `
+      <article class="product-card">
+
+        <div class="product-img">
+
+          <img
+            src="${escapeHTML(image)}"
+            alt="${escapeHTML(name)}"
+            loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+          />
+
+          <div class="img-fallback" style="display:none">
+            Chưa có ảnh<br>${escapeHTML(image)}
+          </div>
+
+          ${badge ? `<span class="badge">${escapeHTML(badge)}</span>` : ""}
+
+        </div>
+
+        <div class="product-info">
+
+          <h3 class="product-name">
+            ${escapeHTML(name)}
+          </h3>
+
+          <div class="product-category">
+            ${escapeHTML(category)}
+          </div>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              ${escapeHTML(price)}
+            </div>
+
+            <a
+              class="shop-btn"
+              href="${escapeHTML(link)}"
+              target="_blank"
+              rel="sponsored nofollow noopener"
+            >
+              Xem Shopee
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+    `;
+  }).join("");
+}
+
+function renderStudySubjects(){
+  studyGrid.innerHTML = STUDY_SUBJECTS.map((subject,index) => {
+    const [name,image,links] = subject;
+
+    const linksHTML = links.length
+      ? links.map(link => `
+          <a
+            class="study-link"
+            href="${escapeHTML(link[1])}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>${escapeHTML(link[0])}</span>
+            <span class="study-link-go">Mở ↗</span>
+          </a>
+        `).join("")
+      : `<div class="no-study-link">Chưa có tài liệu. Có thể thêm link trong phần code của môn này.</div>`;
+
+    return `
+      <article class="subject-card" data-subject-index="${index}">
+        <button
+          type="button"
+          class="subject-button"
+          aria-expanded="false"
+        >
+          <div class="subject-image">
+            <img
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(name)}"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+            />
+            <div class="subject-image-fallback" style="display:none">
+              ${escapeHTML(name)}<br>${escapeHTML(image)}
+            </div>
+          </div>
+
+          <div class="subject-name">
+            <span>${escapeHTML(name)}</span>
+            <span class="subject-arrow">⌄</span>
+          </div>
+        </button>
+
+        <div class="subject-links">
+          ${linksHTML}
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  studyGrid.querySelectorAll(".subject-card").forEach(card => {
+    const button = card.querySelector(".subject-button");
+
+    button.addEventListener("click", () => {
+      const isOpen = card.classList.toggle("open");
+      button.setAttribute("aria-expanded", String(isOpen));
+    });
+  });
+}
+
+searchInput.addEventListener("input", renderProducts);
+
+renderCategories();
+renderProducts();
+renderStudySubjects();
+</script>
+
+</body>
+</html>
