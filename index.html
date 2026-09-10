@@ -412,16 +412,23 @@
       position:fixed;
       inset:0;
       z-index:200;
-      display:none;
+      display:flex;
       align-items:center;
       justify-content:center;
       padding:12px;
-      background:rgba(31,40,58,.62);
-      backdrop-filter:blur(5px);
-      touch-action:none;
+      background:rgba(31,40,58,.76);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .12s ease;
+      overscroll-behavior:contain;
     }
 
-    .viewer.open{display:flex}
+    .viewer.open{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
 
     .viewer-panel{
       width:min(94vw,480px);
@@ -429,7 +436,8 @@
       overflow:hidden;
       border-radius:16px;
       background:#fff;
-      box-shadow:0 18px 50px rgba(0,0,0,.18);
+      box-shadow:0 10px 30px rgba(0,0,0,.16);
+      contain:layout paint;
     }
 
     .viewer-image-wrap{
@@ -438,6 +446,8 @@
       aspect-ratio:1/1;
       overflow:hidden;
       background:linear-gradient(135deg,#eef9ff,#fff8e8);
+      touch-action:none;
+      contain:layout paint;
     }
 
     .viewer-image{
@@ -826,6 +836,7 @@
       <img
         src="images/dubai-cover.jpg"
         alt="Ảnh bìa Dubai"
+        decoding="async"
         onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
       />
       <div class="cover-placeholder" style="display:none">
@@ -843,6 +854,7 @@
         <img
           src="images/dubai-avatar.jpg"
           alt="Dubai"
+          decoding="async"
           onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
         />
         <div class="avatar-fallback" style="display:none">D</div>
@@ -891,7 +903,7 @@
 <div class="viewer" id="productViewer" aria-hidden="true">
   <div class="viewer-panel" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
     <div class="viewer-image-wrap" id="viewerSwipeArea">
-      <img class="viewer-image" id="viewerImage" alt="" />
+      <img class="viewer-image" id="viewerImage" alt="" decoding="async" />
       <div class="viewer-fallback" id="viewerFallback" style="display:none">Chưa có ảnh</div>
       <button class="viewer-close" id="viewerClose" type="button" aria-label="Đóng">×</button>
       <button class="viewer-nav viewer-prev" id="viewerPrev" type="button" aria-label="Sản phẩm trước">‹</button>
@@ -1227,7 +1239,7 @@ function renderProducts(){
 
   productGrid.innerHTML = visibleProducts.map((item,index) => {
     const [name,category,price,image,link,badge] = item;
-    const loadMode = index < 6 ? "eager" : "lazy";
+    const loadMode = index < 3 ? "eager" : "lazy";
 
     return `
       <article class="product-card">
@@ -1253,16 +1265,40 @@ function renderProducts(){
     `;
   }).join("");
 
-  productGrid.querySelectorAll(".product-img").forEach(el => {
-    const open = () => openViewer(Number(el.dataset.productIndex));
-    el.addEventListener("click",open);
-    el.addEventListener("keydown",event => {
-      if(event.key === "Enter" || event.key === " "){
-        event.preventDefault();
-        open();
-      }
-    });
-  });
+}
+
+const preloadedImages = new Set();
+
+function preloadViewerImage(src){
+  if(!src || preloadedImages.has(src)) return;
+  preloadedImages.add(src);
+  const img = new Image();
+  img.decoding = "async";
+  img.src = src;
+}
+
+productGrid.addEventListener("click",event => {
+  const target = event.target.closest(".product-img");
+  if(!target || !productGrid.contains(target)) return;
+  openViewer(Number(target.dataset.productIndex));
+});
+
+productGrid.addEventListener("keydown",event => {
+  if(event.key !== "Enter" && event.key !== " ") return;
+  const target = event.target.closest(".product-img");
+  if(!target || !productGrid.contains(target)) return;
+  event.preventDefault();
+  openViewer(Number(target.dataset.productIndex));
+});
+
+function preloadViewerNeighbors(){
+  if(visibleProducts.length < 2) return;
+
+  const prevIndex = (viewerIndex - 1 + visibleProducts.length) % visibleProducts.length;
+  const nextIndex = (viewerIndex + 1) % visibleProducts.length;
+
+  preloadViewerImage(visibleProducts[prevIndex][3]);
+  preloadViewerImage(visibleProducts[nextIndex][3]);
 }
 
 function showViewerProduct(){
@@ -1282,13 +1318,23 @@ function showViewerProduct(){
   viewerFallback.style.display = "none";
   viewerImage.style.display = "block";
   viewerImage.alt = name;
-  viewerImage.src = image;
+
+  viewerImage.onload = () => {
+    preloadViewerNeighbors();
+  };
 
   viewerImage.onerror = () => {
     viewerImage.style.display = "none";
     viewerFallback.style.display = "grid";
     viewerFallback.textContent = `Chưa có ảnh: ${image}`;
+    preloadViewerNeighbors();
   };
+
+  if(viewerImage.getAttribute("src") !== image){
+    viewerImage.src = image;
+  }else if(viewerImage.complete){
+    preloadViewerNeighbors();
+  }
 }
 
 function openViewer(index){
@@ -1302,6 +1348,7 @@ function openViewer(index){
 }
 
 function closeViewer(){
+  pointerActive = false;
   viewer.classList.remove("open");
   viewer.setAttribute("aria-hidden","true");
   document.body.classList.remove("modal-open");
@@ -1326,14 +1373,14 @@ document.addEventListener("keydown",event => {
 });
 
 viewerSwipeArea.addEventListener("pointerdown",event => {
+  if(event.target.closest("button,a")) return;
   pointerActive = true;
   startX = event.clientX;
   startY = event.clientY;
-  if(viewerSwipeArea.setPointerCapture) viewerSwipeArea.setPointerCapture(event.pointerId);
 });
 
 viewerSwipeArea.addEventListener("pointerup",event => {
-  if(!pointerActive) return;
+  if(!pointerActive || event.target.closest("button,a")) return;
   pointerActive = false;
 
   const dx = event.clientX - startX;
@@ -1352,6 +1399,10 @@ viewerSwipeArea.addEventListener("pointerup",event => {
 
 viewerSwipeArea.addEventListener("pointercancel",() => {
   pointerActive = false;
+});
+
+viewerSwipeArea.addEventListener("pointerleave",event => {
+  if(event.pointerType === "mouse") pointerActive = false;
 });
 
 viewerSwipeArea.addEventListener("wheel",event => {
@@ -1400,6 +1451,7 @@ function renderStudySubjects(){
               src="${escapeHTML(image)}"
               alt="${escapeHTML(name)}"
               loading="lazy"
+              decoding="async"
               onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
             />
             <div class="subject-image-fallback" style="display:none">
