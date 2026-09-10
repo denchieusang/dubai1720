@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Những sản phẩm Dubai đã dùng - gợi ý mua trên Shopee." />
-  <title>Dubai Limited 2020</title>
+  <meta name="description" content="Những sản phẩm Dubai đã dùng - gợi ý." />
+  <title>Dubai Limited 2020 </title>
 
   <style>
     :root{
@@ -296,6 +296,18 @@
       font-weight:800;
       padding:3px 5px;
       border-radius:999px;
+    }
+
+    .badge-used{
+      background:linear-gradient(135deg,#16a34a,#22c55e);
+      color:#fff;
+      box-shadow:0 2px 7px rgba(22,163,74,.28);
+    }
+
+    .badge-suggest{
+      background:linear-gradient(135deg,#ff7a00,#ff4d6d);
+      color:#fff;
+      box-shadow:0 2px 7px rgba(255,92,72,.28);
     }
 
     .zoom-tip{
@@ -790,7 +802,7 @@
   <div class="wrap topbar">
     <a href="#top" class="brand">
       <span class="brand-logo">D</span>
-      <span>Dubai Đã Dùng</span>
+      <span>Dubai Limited 2020</span>
     </a>
 
     <input
@@ -812,13 +824,13 @@
     -->
     <div class="cover">
       <img
-        src="images/dubai-cover.jpg"
+        src="dubai-anh-bia.jpg"
         alt="Ảnh bìa Dubai"
         onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
       />
       <div class="cover-placeholder" style="display:none">
         ẢNH BÌA DUBAI<br>
-        images/dubai-cover.jpg
+       dubai-anh-bia.jpg
       </div>
     </div>
 
@@ -829,7 +841,7 @@
       -->
       <div class="avatar">
         <img
-          src="images/dubai-avatar.jpg"
+          src="dubai-cover.jpg"
           alt="Dubai"
           onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
         />
@@ -926,7 +938,7 @@
 <section class="thanks-section">
   <div class="wrap">
     <div class="thanks-box">
-      <strong>🌈 Cảm ơn bạn đã ghé thăm Dubai Limited 2020!</strong>
+      <strong>🌈 Cảm ơn bạn đã ghé thăm Dubai Đã Dùng!</strong>
       <div class="thanks-lines">
         <span class="thanks-line">Chúc cả nhà mỗi ngày học một chút, vui thật nhiều 😊</span>
         <span class="thanks-line">Thấy món nào hữu ích thì mình tham khảo, không cần mua vội nhé!</span>
@@ -937,7 +949,7 @@
 </section>
 
 <footer>
-  © <span id="year"></span> Dubai Limited 2020
+  © <span id="year"></span> Dubai Đã Dùng
 </footer>
 
 <script>
@@ -967,8 +979,9 @@ Khi thêm sản phẩm mới:
 // THỰC PHẨM
 // ================================================================
 const FOOD_PRODUCTS = [
-["Sữa Cao Đạm Vinamilk","261.000đ","sua-hat-cao-dam-vinamilk.jpg","https://s.shopee.vn/Ln7NDecyn","Đã dùng"],
-["Combo 6 Tuýp Sữa Đặc Có Đường Ông Thọ","115.000đ","sua-ong-tho-vinamilk.jpg","https://s.shopee.vn/2Vrbxk56O2","Gợi ý"]
+["Sữa Cao Đạm Vinamilk","261.000đ","sua-hat-cao-dam-vinamilk.jpg","https://shopee.vn/","Đã dùng"],
+["Combo 6 Tuýp Sữa Đặc Có Đường Ông Thọ","129.000đ","images/sua-hat.jpg","https://shopee.vn/","Đã dùng"]
+["Combo 6 Tuýp Sữa Đặc Có Đường Ông Thọ","129.000đ","images/sua-hat.jpg","https://shopee.vn/","Đã dùng"]
 ];
 
 
@@ -1065,9 +1078,8 @@ Có thể dùng link:
 // TOÁN
 // ================================================================
 const MATH_LINKS = [
-["Toán Mầm Non","https://drive.google.com/drive/folders/1RqaHiDmlO9s1x7dGTXSBAqP2Be9HueX8?usp=drive_link"]
-  ["1001 Bài Toán Tư Duy G1>G5","https://drive.google.com/drive/folders/1K7UADFkWHm-gxogBK2Apu0VcZoCzkEeM?usp=sharing"],
-["Tài liệu Toán Timo","https://drive.google.com/drive/folders/1pCTLzwYknqlPPDotZGGP24190dAt3o2s?usp=drive_link"]
+["Bài tập Toán tham khảo","https://drive.google.com/"],
+["Tài liệu luyện Toán","https://drive.google.com/"]
 ];
 
 
@@ -1084,9 +1096,8 @@ const ENGLISH_LINKS = [
 // VĂN - TRUYỆN
 // ================================================================
 const LITERATURE_LINKS = [
-["Tập Đánh Vần","https://drive.google.com/file/d/1F_UnWsciU1XushzY40aTF249LNAFSJKE/view?usp=drive_link"],
-["Luyện Chính Tả","https://drive.google.com/drive/folders/18EvJ5D__2IYi86-cpgaqCkv4pgy4a0tz?usp=drive_link"]
- ["60 Đề Trạng Nguyên Tiếng Việt","https://drive.google.com/drive/folders/1jMT7_1DgHkB8epo9zsEmDTHMcJa1ZD-K?usp=drive_link"] 
+["Truyện đọc cho bé","https://drive.google.com/"],
+["Tài liệu đọc hiểu","https://drive.google.com/"]
 ];
 
 
@@ -1225,7 +1236,7 @@ function renderProducts(){
           <img src="${escapeHTML(image)}" alt="${escapeHTML(name)}" loading="${loadMode}" decoding="async"
                onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
           <div class="img-fallback" style="display:none">Chưa có ảnh<br>${escapeHTML(image)}</div>
-          ${badge ? `<span class="badge">${escapeHTML(badge)}</span>` : ""}
+          ${badge ? `<span class="badge ${badge.toLowerCase().includes("đã dùng") ? "badge-used" : badge.toLowerCase().includes("gợi ý") ? "badge-suggest" : ""}">${escapeHTML(badge)}</span>` : ""}
           <span class="zoom-tip">⌕</span>
         </div>
 
