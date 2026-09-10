@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Những sản phẩm Dubai đã dùng - gợi ý mua trên Shopee." />
-  <title>Dubai Đã Dùng</title>
+  <title>Dubai Limited 2020</title>
 
   <style>
     :root{
@@ -182,35 +182,36 @@
       color:var(--muted);
     }
 
+
     /* MENU */
     .category-wrap{
       position:sticky;
       top:52px;
       z-index:40;
-      padding:8px 0 10px;
-      background:rgba(255,250,242,.95);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(231,234,242,.9);
+      padding:5px 0 6px;
+      background:rgba(255,250,242,.96);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(231,234,242,.92);
     }
 
     .category-menu{
       display:flex;
-      gap:7px;
-      overflow-x:auto;
-      scrollbar-width:none;
+      flex-wrap:wrap;
+      gap:4px;
+      overflow:visible;
     }
-
-    .category-menu::-webkit-scrollbar{display:none}
 
     .category-btn{
       flex:0 0 auto;
+      min-height:27px;
       border:1px solid var(--line);
       background:#fff;
       color:#56637f;
       border-radius:999px;
-      padding:8px 12px;
-      font-size:12px;
-      font-weight:700;
+      padding:0 8px;
+      font-size:10px;
+      line-height:1;
+      font-weight:800;
       cursor:pointer;
     }
 
@@ -218,49 +219,36 @@
       background:linear-gradient(135deg,#82cfff,#8fe0b9);
       color:#23405c;
       border-color:transparent;
-      box-shadow:0 3px 10px rgba(117,190,221,.18);
+      box-shadow:0 2px 8px rgba(117,190,221,.16);
     }
 
-    /* PRODUCT GRID */
-    main{padding-bottom:35px}
+    /* PRODUCT GRID - MOBILE FIRST */
+    main{padding:7px 0 24px}
 
     .section-head{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:10px;
-      margin:6px 0 10px;
+      gap:8px;
+      margin:3px 0 7px;
     }
 
-    .section-head h2{
-      margin:0;
-      font-size:17px;
-    }
-
-    .result-count{
-      font-size:12px;
-      color:var(--muted);
-      white-space:nowrap;
-    }
+    .section-head h2{margin:0;font-size:14px}
+    .result-count{font-size:10px;color:var(--muted);white-space:nowrap}
 
     .grid{
       display:grid;
-      grid-template-columns:repeat(5,minmax(0,1fr));
-      gap:10px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:6px;
     }
 
     .product-card{
       min-width:0;
       background:rgba(255,255,255,.98);
       border:1px solid #e8edf5;
-      border-radius:12px;
+      border-radius:10px;
       overflow:hidden;
-      transition:.18s ease;
-    }
-
-    .product-card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 6px 20px rgba(0,0,0,.06);
+      contain:content;
     }
 
     .product-img{
@@ -268,12 +256,18 @@
       background:linear-gradient(135deg,#eef8ff,#fff8e8);
       overflow:hidden;
       position:relative;
+      cursor:zoom-in;
     }
 
     .product-img img{
       width:100%;
       height:100%;
       object-fit:cover;
+      transition:transform .16s ease;
+    }
+
+    @media(hover:hover) and (pointer:fine){
+      .product-img:hover img{transform:scale(1.025)}
     }
 
     .img-fallback{
@@ -282,146 +276,328 @@
       display:grid;
       place-items:center;
       color:#999;
-      font-size:12px;
-      padding:10px;
+      font-size:9px;
+      padding:7px;
       text-align:center;
       background:linear-gradient(135deg,#eef8ff,#fff8e8);
     }
 
     .badge{
       position:absolute;
-      top:7px;
-      left:7px;
-      background:rgba(61,79,115,.86);
+      top:5px;
+      left:5px;
+      max-width:calc(100% - 10px);
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      background:rgba(61,79,115,.84);
       color:#fff;
-      font-size:9px;
-      font-weight:700;
-      padding:4px 6px;
+      font-size:8px;
+      font-weight:800;
+      padding:3px 5px;
       border-radius:999px;
     }
 
-    .product-info{
-      padding:9px;
+    .zoom-tip{
+      position:absolute;
+      right:5px;
+      bottom:5px;
+      width:20px;
+      height:20px;
+      display:grid;
+      place-items:center;
+      border-radius:7px;
+      background:rgba(255,255,255,.9);
+      color:#52617b;
+      font-size:10px;
     }
+
+    .product-info{padding:6px}
 
     .product-name{
       margin:0;
-      font-size:13px;
+      font-size:10.5px;
       line-height:1.35;
-      min-height:35px;
+      min-height:29px;
       display:-webkit-box;
       -webkit-line-clamp:2;
       -webkit-box-orient:vertical;
       overflow:hidden;
+      font-weight:800;
     }
 
     .product-category{
-      margin-top:5px;
-      color:#999;
-      font-size:10px;
-    }
-
-    .product-bottom{
-      margin-top:7px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:6px;
+      margin-top:3px;
+      color:#9aa3b4;
+      font-size:8.5px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
     }
 
     .price{
+      margin-top:4px;
       color:var(--accent);
-      font-size:13px;
-      font-weight:800;
+      font-size:11px;
+      font-weight:900;
       white-space:nowrap;
     }
 
-    .shop-btn{
-      display:inline-flex;
+    .card-actions{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:4px;
+      margin-top:5px;
+    }
+
+    .shop-btn,.voucher-btn{
+      min-height:27px;
+      display:flex;
       align-items:center;
       justify-content:center;
-      min-width:32px;
-      height:28px;
-      padding:0 8px;
-      border-radius:8px;
+      border-radius:7px;
+      padding:0 4px;
+      text-align:center;
+      font-size:8px;
+      line-height:1.15;
+      font-weight:900;
+    }
+
+    .shop-btn{
       background:linear-gradient(135deg,#ff8a68,#ffac66);
       color:#fff;
-      font-size:10px;
-      font-weight:700;
-      white-space:nowrap;
+    }
+
+    .voucher-btn{
+      border:1px solid #ffd7c7;
+      background:#fff3ed;
+      color:#dc5d40;
     }
 
     .empty{
       display:none;
-      padding:30px 10px;
+      padding:24px 10px;
       text-align:center;
       background:#fff;
       border:1px dashed var(--line);
-      border-radius:12px;
+      border-radius:10px;
       color:var(--muted);
-      font-size:13px;
+      font-size:11px;
     }
 
     .affiliate-note{
-      margin-top:18px;
-      font-size:11px;
+      margin-top:12px;
+      font-size:9.5px;
       color:#8a8a8a;
-      line-height:1.6;
+      line-height:1.5;
       text-align:center;
+    }
+
+    /* IMAGE VIEWER */
+    body.modal-open{overflow:hidden}
+
+    .viewer{
+      position:fixed;
+      inset:0;
+      z-index:200;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:12px;
+      background:rgba(31,40,58,.62);
+      backdrop-filter:blur(5px);
+      touch-action:none;
+    }
+
+    .viewer.open{display:flex}
+
+    .viewer-panel{
+      width:min(94vw,480px);
+      max-height:92vh;
+      overflow:hidden;
+      border-radius:16px;
+      background:#fff;
+      box-shadow:0 18px 50px rgba(0,0,0,.18);
+    }
+
+    .viewer-image-wrap{
+      position:relative;
+      width:100%;
+      aspect-ratio:1/1;
+      overflow:hidden;
+      background:linear-gradient(135deg,#eef9ff,#fff8e8);
+    }
+
+    .viewer-image{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .viewer-fallback{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      padding:20px;
+      color:#8c96a7;
+      text-align:center;
+      font-size:12px;
+    }
+
+    .viewer-close,.viewer-nav{
+      position:absolute;
+      z-index:3;
+      border:0;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      background:rgba(255,255,255,.93);
+      color:#34445f;
+      box-shadow:0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .viewer-close{
+      width:34px;
+      height:34px;
+      top:9px;
+      right:9px;
+      border-radius:50%;
+      font-size:18px;
+    }
+
+    .viewer-nav{
+      width:34px;
+      height:42px;
+      top:50%;
+      transform:translateY(-50%);
+      border-radius:11px;
+      font-size:20px;
+    }
+
+    .viewer-prev{left:8px}
+    .viewer-next{right:8px}
+
+    .viewer-counter{
+      position:absolute;
+      left:50%;
+      bottom:8px;
+      transform:translateX(-50%);
+      padding:4px 7px;
+      border-radius:999px;
+      background:rgba(42,56,79,.78);
+      color:#fff;
+      font-size:9px;
+      font-weight:800;
+    }
+
+    .viewer-info{padding:10px}
+    .viewer-title{margin:0;font-size:13px;line-height:1.35;font-weight:900}
+
+    .viewer-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin-top:5px;
+    }
+
+    .viewer-category{color:var(--muted);font-size:10px}
+    .viewer-price{color:#ed6547;font-size:13px;font-weight:900}
+
+    .viewer-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:6px;
+      margin-top:8px;
+    }
+
+    .viewer-actions a{
+      min-height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:9px;
+      padding:0 7px;
+      text-align:center;
+      font-size:10px;
+      font-weight:900;
+    }
+
+    .viewer-shop{
+      background:linear-gradient(135deg,#ff8a68,#ffad66);
+      color:#fff;
+    }
+
+    .viewer-voucher{
+      border:1px solid #ffd7c7;
+      background:#fff3ed;
+      color:#dc5d40;
+    }
+
+    .viewer-help{
+      margin-top:7px;
+      color:#949dad;
+      text-align:center;
+      font-size:9px;
     }
 
     footer{
       border-top:1px solid var(--line);
       background:rgba(255,255,255,.96);
       color:#8a94aa;
-      font-size:11px;
+      font-size:10px;
       text-align:center;
-      padding:16px 10px;
+      padding:14px 10px;
     }
 
-    @media(max-width:900px){
-      .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media(min-width:620px){
+      .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+      .product-info{padding:7px}
+      .product-name{font-size:11.5px}
+      .price{font-size:12px}
     }
 
-    @media(max-width:700px){
-      .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-      .cover{aspect-ratio:3/1}
+    @media(min-width:860px){
+      .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+      .product-name{font-size:12px}
+      .section-head h2{font-size:15px}
     }
 
     @media(max-width:520px){
-      .wrap{width:min(100% - 14px,1100px)}
+      .wrap{width:min(100% - 10px,1100px)}
       .topbar{min-height:48px}
       .category-wrap{top:48px}
-      .brand span:last-child{font-size:15px}
-      .mini-search{width:46vw;height:34px;font-size:13px}
-      .cover-section{padding-top:7px}
+      .brand span:last-child{font-size:14px}
+      .mini-search{width:46vw;height:32px;font-size:12px}
+      .cover-section{padding-top:6px}
       .cover{
-        border-radius:11px;
-        min-height:120px;
-        aspect-ratio:2.6/1;
+        border-radius:10px;
+        min-height:102px;
+        aspect-ratio:3.2/1;
       }
-      .cover-placeholder{min-height:120px}
-      .profile-row{
-        margin-top:-28px;
-        padding:0 7px;
-      }
-      .avatar{
-        width:62px;
-        height:62px;
-      }
-      .profile-text h1{font-size:17px}
-      .profile-text p{font-size:11px}
-      .grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:7px;
-      }
-      .product-info{padding:8px}
-      .product-name{font-size:12px;min-height:33px}
-      .price{font-size:12px}
-      .shop-btn{font-size:9px;padding:0 7px}
-      .section-head h2{font-size:15px}
+      .cover-placeholder{min-height:102px}
+      .profile-row{margin-top:-26px;padding:0 6px}
+      .avatar{width:58px;height:58px}
+      .profile-text h1{font-size:16px}
+      .profile-text p{font-size:10px}
     }
-  
+
+    @media(max-width:350px){
+      .wrap{width:min(100% - 8px,1100px)}
+      .grid{gap:4px}
+      .product-info{padding:5px}
+      .product-name{font-size:9.5px}
+      .shop-btn,.voucher-btn{font-size:7.2px;padding:0 3px}
+      .category-btn{font-size:9px;padding:0 6px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important;transition:none!important}
+    }
+
     /* STUDY MATERIALS */
     .study-section{
       padding:24px 0 8px;
@@ -636,13 +812,13 @@
     -->
     <div class="cover">
       <img
-        src="dubai-anh-bia.jpg"
+        src="images/dubai-cover.jpg"
         alt="Ảnh bìa Dubai"
         onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
       />
       <div class="cover-placeholder" style="display:none">
         ẢNH BÌA DUBAI<br>
-        dubai-anh-bia.jpg
+        images/dubai-cover.jpg
       </div>
     </div>
 
@@ -653,7 +829,7 @@
       -->
       <div class="avatar">
         <img
-          src="dubai-cover.jpg"
+          src="images/dubai-avatar.jpg"
           alt="Dubai"
           onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
         />
@@ -662,7 +838,7 @@
 
       <div class="profile-text">
         <h1>Dubai đã dùng gì?</h1>
-        <p>Tổng hợp những món Dubai đã sử dụng và gợi ý tham khảo trên Shopee.</p>
+        <p>Tổng hợp những món Dubai đã sử dụng và gợi ý tham khảo.</p>
       </div>
 
     </div>
@@ -698,6 +874,35 @@
   </div>
 </main>
 
+
+<!-- XEM NHANH ẢNH SẢN PHẨM -->
+<div class="viewer" id="productViewer" aria-hidden="true">
+  <div class="viewer-panel" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
+    <div class="viewer-image-wrap" id="viewerSwipeArea">
+      <img class="viewer-image" id="viewerImage" alt="" />
+      <div class="viewer-fallback" id="viewerFallback" style="display:none">Chưa có ảnh</div>
+      <button class="viewer-close" id="viewerClose" type="button" aria-label="Đóng">×</button>
+      <button class="viewer-nav viewer-prev" id="viewerPrev" type="button" aria-label="Sản phẩm trước">‹</button>
+      <button class="viewer-nav viewer-next" id="viewerNext" type="button" aria-label="Sản phẩm sau">›</button>
+      <div class="viewer-counter" id="viewerCounter"></div>
+    </div>
+    <div class="viewer-info">
+      <h3 class="viewer-title" id="viewerTitle"></h3>
+      <div class="viewer-meta">
+        <span class="viewer-category" id="viewerCategory"></span>
+        <span class="viewer-price" id="viewerPrice"></span>
+      </div>
+      <div class="viewer-actions">
+        <a class="viewer-shop" id="viewerShop" target="_blank" rel="sponsored nofollow noopener">Xem Shopee</a>
+        <a class="viewer-voucher" id="viewerVoucher" target="_blank" rel="sponsored nofollow noopener">LẤY MÃ GIẢM GIÁ SHOPEE</a>
+      </div>
+      <div class="viewer-help">Vuốt trái/phải hoặc lên/xuống để xem sản phẩm khác</div>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- =====================================================
      TÀI LIỆU HỌC TẬP
      Phần này nằm cố định ở cuối nội dung trang.
@@ -721,7 +926,7 @@
 <section class="thanks-section">
   <div class="wrap">
     <div class="thanks-box">
-      <strong>🌈 Cảm ơn bạn đã ghé thăm Dubai!</strong>
+      <strong>🌈 Cảm ơn bạn đã ghé thăm Dubai Limited 2020!</strong>
       <div class="thanks-lines">
         <span class="thanks-line">Chúc cả nhà mỗi ngày học một chút, vui thật nhiều 😊</span>
         <span class="thanks-line">Thấy món nào hữu ích thì mình tham khảo, không cần mua vội nhé!</span>
@@ -732,7 +937,7 @@
 </section>
 
 <footer>
-  © <span id="year"></span> Dubai Đã Dùng
+  © <span id="year"></span> Dubai Limited 2020
 </footer>
 
 <script>
@@ -742,12 +947,14 @@ A. DANH SÁCH SẢN PHẨM
 =================================================================
 
 QUY ƯỚC MỖI SẢN PHẨM = 1 DÒNG:
-["Tên sản phẩm","Giá","Ảnh","Link Shopee","Nhãn"]
+["Tên sản phẩm","Giá","Ảnh","Link Affiliate Shopee","Nhãn"]
 
 Ảnh sản phẩm:
 - Upload ảnh vào thư mục images/ trên GitHub.
 - Ví dụ: images/banh-an-sang.jpg
 - index.html và thư mục images phải nằm cùng cấp.
+
+Cả 2 nút XEM SHOPEE và LẤY MÃ GIẢM GIÁ SHOPEE đều dùng link affiliate ở cột thứ 4.
 
 Khi thêm sản phẩm mới:
 1. Tìm đúng nhóm danh mục bên dưới.
@@ -760,8 +967,8 @@ Khi thêm sản phẩm mới:
 // THỰC PHẨM
 // ================================================================
 const FOOD_PRODUCTS = [
-["Sữa Cao Đạm Vinamil","281.000đ","sua-hat-cao-dam-vinamilk.jpg","https://s.shopee.vn/Ln7NDecyn","Đã dùng"],
-["Combo 6 Tuýp Sữa Đặc Có Đường Ông Thọ","115.000đ","sua-ong-tho-vinamilk.jpg","https://s.shopee.vn/2Vrbxk56O2","Đã dùng"]
+["Sữa Cao Đạm Vinamil","261.000đ","sua-hat-cao-dam-vinamilk.jpg","https://shopee.vn/","Đã dùng"],
+["ombo 6 Tuýp Sữa Đặc Có Đường Ông Thọ","115.000đ","sua-ong-tho-vinamilk.jpg","https://s.shopee.vn/2Vrbxk56O2","Gợi ý"]
 ];
 
 
@@ -858,8 +1065,9 @@ Có thể dùng link:
 // TOÁN
 // ================================================================
 const MATH_LINKS = [
-["Bài tập Toán tham khảo","https://drive.google.com/"],
-["Tài liệu luyện Toán","https://drive.google.com/"]
+["Toán Mầm Non","https://drive.google.com/drive/folders/1RqaHiDmlO9s1x7dGTXSBAqP2Be9HueX8?usp=drive_link"]
+  ["1001 Bài Toán Tư Duy G1>G5","https://drive.google.com/drive/folders/1K7UADFkWHm-gxogBK2Apu0VcZoCzkEeM?usp=sharing"],
+["Tài liệu Toán Timo","https://drive.google.com/drive/folders/1pCTLzwYknqlPPDotZGGP24190dAt3o2s?usp=drive_link"]
 ];
 
 
@@ -876,8 +1084,9 @@ const ENGLISH_LINKS = [
 // VĂN - TRUYỆN
 // ================================================================
 const LITERATURE_LINKS = [
-["Truyện đọc cho bé","https://drive.google.com/"],
-["Tài liệu đọc hiểu","https://drive.google.com/"]
+["Tập Đánh Vần","https://drive.google.com/file/d/1F_UnWsciU1XushzY40aTF249LNAFSJKE/view?usp=drive_link"],
+["Luyện Chính Tả","https://drive.google.com/drive/folders/18EvJ5D__2IYi86-cpgaqCkv4pgy4a0tz?usp=drive_link"]
+ ["60 Đề Trạng Nguyên Tiếng Việt","https://drive.google.com/drive/folders/1jMT7_1DgHkB8epo9zsEmDTHMcJa1ZD-K?usp=drive_link"] 
 ];
 
 
@@ -903,9 +1112,29 @@ const resultCount = document.getElementById("resultCount");
 const emptyState = document.getElementById("emptyState");
 const studyGrid = document.getElementById("studyGrid");
 
+const viewer = document.getElementById("productViewer");
+const viewerImage = document.getElementById("viewerImage");
+const viewerFallback = document.getElementById("viewerFallback");
+const viewerTitle = document.getElementById("viewerTitle");
+const viewerCategory = document.getElementById("viewerCategory");
+const viewerPrice = document.getElementById("viewerPrice");
+const viewerCounter = document.getElementById("viewerCounter");
+const viewerShop = document.getElementById("viewerShop");
+const viewerVoucher = document.getElementById("viewerVoucher");
+const viewerClose = document.getElementById("viewerClose");
+const viewerPrev = document.getElementById("viewerPrev");
+const viewerNext = document.getElementById("viewerNext");
+const viewerSwipeArea = document.getElementById("viewerSwipeArea");
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 let activeCategory = "Tất cả";
+let visibleProducts = [];
+let viewerIndex = 0;
+let startX = 0;
+let startY = 0;
+let pointerActive = false;
+let wheelLock = false;
 
 function escapeHTML(value){
   return String(value ?? "")
@@ -981,67 +1210,155 @@ function getFilteredProducts(){
 }
 
 function renderProducts(){
-  const list = getFilteredProducts();
+  visibleProducts = getFilteredProducts();
 
-  resultCount.textContent = `${list.length} sản phẩm`;
-  emptyState.style.display = list.length ? "none" : "block";
+  resultCount.textContent = `${visibleProducts.length} sản phẩm`;
+  emptyState.style.display = visibleProducts.length ? "none" : "block";
 
-  productGrid.innerHTML = list.map(item => {
+  productGrid.innerHTML = visibleProducts.map((item,index) => {
     const [name,category,price,image,link,badge] = item;
+    const loadMode = index < 6 ? "eager" : "lazy";
 
     return `
       <article class="product-card">
-
-        <div class="product-img">
-
-          <img
-            src="${escapeHTML(image)}"
-            alt="${escapeHTML(name)}"
-            loading="lazy"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
-          />
-
-          <div class="img-fallback" style="display:none">
-            Chưa có ảnh<br>${escapeHTML(image)}
-          </div>
-
+        <div class="product-img" role="button" tabindex="0" data-product-index="${index}" aria-label="Phóng to ảnh ${escapeHTML(name)}">
+          <img src="${escapeHTML(image)}" alt="${escapeHTML(name)}" loading="${loadMode}" decoding="async"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+          <div class="img-fallback" style="display:none">Chưa có ảnh<br>${escapeHTML(image)}</div>
           ${badge ? `<span class="badge">${escapeHTML(badge)}</span>` : ""}
-
+          <span class="zoom-tip">⌕</span>
         </div>
 
         <div class="product-info">
+          <h3 class="product-name">${escapeHTML(name)}</h3>
+          <div class="product-category">${escapeHTML(category)}</div>
+          <div class="price">${escapeHTML(price)}</div>
 
-          <h3 class="product-name">
-            ${escapeHTML(name)}
-          </h3>
-
-          <div class="product-category">
-            ${escapeHTML(category)}
+          <div class="card-actions">
+            <a class="shop-btn" href="${escapeHTML(link)}" target="_blank" rel="sponsored nofollow noopener">Xem Shopee</a>
+            <a class="voucher-btn" href="${escapeHTML(link)}" target="_blank" rel="sponsored nofollow noopener">LẤY MÃ GIẢM GIÁ SHOPEE</a>
           </div>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              ${escapeHTML(price)}
-            </div>
-
-            <a
-              class="shop-btn"
-              href="${escapeHTML(link)}"
-              target="_blank"
-              rel="sponsored nofollow noopener"
-            >
-              Xem Shopee
-            </a>
-
-          </div>
-
         </div>
-
       </article>
     `;
   }).join("");
+
+  productGrid.querySelectorAll(".product-img").forEach(el => {
+    const open = () => openViewer(Number(el.dataset.productIndex));
+    el.addEventListener("click",open);
+    el.addEventListener("keydown",event => {
+      if(event.key === "Enter" || event.key === " "){
+        event.preventDefault();
+        open();
+      }
+    });
+  });
 }
+
+function showViewerProduct(){
+  if(!visibleProducts.length) return;
+  if(viewerIndex < 0) viewerIndex = visibleProducts.length - 1;
+  if(viewerIndex >= visibleProducts.length) viewerIndex = 0;
+
+  const [name,category,price,image,link] = visibleProducts[viewerIndex];
+
+  viewerTitle.textContent = name;
+  viewerCategory.textContent = category;
+  viewerPrice.textContent = price;
+  viewerCounter.textContent = `${viewerIndex + 1} / ${visibleProducts.length}`;
+  viewerShop.href = link;
+  viewerVoucher.href = link;
+
+  viewerFallback.style.display = "none";
+  viewerImage.style.display = "block";
+  viewerImage.alt = name;
+  viewerImage.src = image;
+
+  viewerImage.onerror = () => {
+    viewerImage.style.display = "none";
+    viewerFallback.style.display = "grid";
+    viewerFallback.textContent = `Chưa có ảnh: ${image}`;
+  };
+}
+
+function openViewer(index){
+  if(!visibleProducts.length) return;
+  viewerIndex = index;
+  showViewerProduct();
+  viewer.classList.add("open");
+  viewer.setAttribute("aria-hidden","false");
+  document.body.classList.add("modal-open");
+  viewerClose.focus();
+}
+
+function closeViewer(){
+  viewer.classList.remove("open");
+  viewer.setAttribute("aria-hidden","true");
+  document.body.classList.remove("modal-open");
+}
+
+function nextProduct(){ viewerIndex++; showViewerProduct(); }
+function prevProduct(){ viewerIndex--; showViewerProduct(); }
+
+viewerClose.addEventListener("click",closeViewer);
+viewerNext.addEventListener("click",nextProduct);
+viewerPrev.addEventListener("click",prevProduct);
+
+viewer.addEventListener("click",event => {
+  if(event.target === viewer) closeViewer();
+});
+
+document.addEventListener("keydown",event => {
+  if(!viewer.classList.contains("open")) return;
+  if(event.key === "Escape") closeViewer();
+  if(event.key === "ArrowRight" || event.key === "ArrowDown") nextProduct();
+  if(event.key === "ArrowLeft" || event.key === "ArrowUp") prevProduct();
+});
+
+viewerSwipeArea.addEventListener("pointerdown",event => {
+  pointerActive = true;
+  startX = event.clientX;
+  startY = event.clientY;
+  if(viewerSwipeArea.setPointerCapture) viewerSwipeArea.setPointerCapture(event.pointerId);
+});
+
+viewerSwipeArea.addEventListener("pointerup",event => {
+  if(!pointerActive) return;
+  pointerActive = false;
+
+  const dx = event.clientX - startX;
+  const dy = event.clientY - startY;
+  const absX = Math.abs(dx);
+  const absY = Math.abs(dy);
+
+  if(Math.max(absX,absY) < 42) return;
+
+  if(absX >= absY){
+    dx < 0 ? nextProduct() : prevProduct();
+  }else{
+    dy < 0 ? nextProduct() : prevProduct();
+  }
+});
+
+viewerSwipeArea.addEventListener("pointercancel",() => {
+  pointerActive = false;
+});
+
+viewerSwipeArea.addEventListener("wheel",event => {
+  if(wheelLock) return;
+
+  const movement = Math.abs(event.deltaY) >= Math.abs(event.deltaX)
+    ? event.deltaY
+    : event.deltaX;
+
+  if(Math.abs(movement) < 20) return;
+
+  event.preventDefault();
+  wheelLock = true;
+  movement > 0 ? nextProduct() : prevProduct();
+
+  setTimeout(() => { wheelLock = false; },260);
+},{passive:false});
 
 function renderStudySubjects(){
   studyGrid.innerHTML = STUDY_SUBJECTS.map((subject,index) => {
